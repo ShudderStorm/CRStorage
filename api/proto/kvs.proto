@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package kvs;
+
+option go_package = "service/kvs";
+
+service KVS {
+  rpc Set(SetRequest) returns (Status);
+  rpc Get(GetRequest) returns (Value);
+}
+
+message SetRequest {
+  string key = 1;
+  string value = 2;
+}
+
+message GetRequest {
+  string key = 1;
+}
+
+message Status {
+  bool success = 1;
+}
+
+message Value {
+  string value = 1;
+}
